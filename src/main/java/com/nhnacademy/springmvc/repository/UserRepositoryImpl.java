@@ -4,7 +4,11 @@ import com.nhnacademy.springmvc.domain.User;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+@Service
+@Repository
 public class UserRepositoryImpl implements UserRepository {
     private final Map<String, User> userMap = new HashMap<>();
 
