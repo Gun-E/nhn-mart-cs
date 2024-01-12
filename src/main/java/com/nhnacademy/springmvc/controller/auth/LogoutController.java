@@ -15,10 +15,6 @@ public class LogoutController {
         if (session != null) {
             session.invalidate();
         }
-        Cookie cookie = new Cookie("SESSION", null);
-        cookie.setMaxAge(0);
-        cookie.setPath("/");
-        response.addCookie(cookie);
 
         return "redirect:/login";
     }

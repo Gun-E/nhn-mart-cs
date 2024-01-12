@@ -1,8 +1,7 @@
 package com.nhnacademy.springmvc.config;
 
 import com.nhnacademy.springmvc.Base;
-import com.nhnacademy.springmvc.repository.UserRepository;
-import com.nhnacademy.springmvc.repository.UserRepositoryImpl;
+import com.nhnacademy.springmvc.repository.*;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,11 +14,18 @@ import org.springframework.stereotype.Controller;
     excludeFilters = { @ComponentScan.Filter(Controller.class)})
 public class RootConfig {
     @Bean
-    public UserRepository userRepository() {
-        UserRepository userRepository = new UserRepositoryImpl();
-        userRepository.addUser("admin", "12345");
+    public CustomerRepository customerRepository() {
+        CustomerRepositoryImpl customerRepositoryImpl = new CustomerRepositoryImpl();
+        customerRepositoryImpl.addCustomer("qwe", "qwe");
 
-        return userRepository;
+        return customerRepositoryImpl;
+    }
+    @Bean
+    public AdminRepository adminRepository() {
+        AdminRepositoryImpl adminRepositoryImpl = new AdminRepositoryImpl();
+        adminRepositoryImpl.addAdmin("admin", "12345");
+
+        return adminRepositoryImpl;
     }
     @Bean
     public MessageSource messageSource() {
