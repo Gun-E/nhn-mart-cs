@@ -1,3 +1,7 @@
 
 X
-java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8ôß‰âÏ1
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8ÄÒĞ‘Ğ1
+G
+java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8ÄÒĞ‘Ğ1
+G
+java:S1128"*Remove this unused import 'lombok.Setter'.(ó¸çµ8ÄÒĞ‘Ğ1

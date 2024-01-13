@@ -9,19 +9,19 @@
 </head>
 <body>
 <div style="margin: auto; width: 400px;">
-    <h1 class="h3 mt-5 mb-3 fw-normal">고객 페이지</h1>
+    <h1 class="h3 mt-5 mb-3 fw-normal" th:text="' 고객 페이지'"></h1>
 
-    <form th:action="@{/admin}" method="get">
+    <form th:action="@{/customer/post/list}" method="get">
         <input class="w-100 btn btn-warning mt-3" type="submit" value="내 문의 목록"/>
     </form>
-    <form th:action="@{/admin}" method="get">
+    <form th:action="@{/customer/post/register}" method="get">
         <input class="w-100 btn btn-warning mt-3" type="submit" value="문의 하기"/>
     </form>
     <p class="mt-5 mb-3 text-muted">© 2022-2024</p>
     <br/>
 
     <form th:action="@{/logout}" method="post">
-        <input class="w-100 btn  btn-lg btn-primary mt-3" type="submit" value="로그아웃"/>
+        <input class="btn btn-primary mt-3" type="submit" value="로그아웃"/>
     </form>
 </div>
 </body>

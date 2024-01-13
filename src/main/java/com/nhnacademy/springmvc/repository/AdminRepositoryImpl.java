@@ -1,9 +1,11 @@
 package com.nhnacademy.springmvc.repository;
 
 import com.nhnacademy.springmvc.domain.Admin;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 import org.springframework.stereotype.Repository;
 
 @Repository

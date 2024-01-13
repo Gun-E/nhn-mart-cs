@@ -1,12 +1,15 @@
 package com.nhnacademy.springmvc.repository.post;
 
 import com.nhnacademy.springmvc.domain.post.Post;
+import com.nhnacademy.springmvc.domain.post.Type;
+import java.util.List;
+import java.util.Map;
 
 public interface PostRepository {
-    boolean exists(long id);
 
-    Post register(String title, String content);
+    Post register(String id, String title, String content, Type type);
 
-    Post getPost(long id);
+    List<Post> getPosts(String Id);
 
+    Post getPost(long postId);
 }

@@ -1,41 +1,42 @@
 package com.nhnacademy.springmvc.repository.post;
 
 import com.nhnacademy.springmvc.domain.post.Post;
+import com.nhnacademy.springmvc.domain.post.Type;
+import java.util.*;
+import java.util.stream.Collectors;
+import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
 
 @Repository("postRepository")
 public class PostRepositoryImpl implements PostRepository {
-    private final Map<Long, Post> posts = new HashMap<>();
+    private final List<Post> posts = new ArrayList<>();
+
+//    @Override
+//    public boolean exists(String id) {
+//        return posts.stream()
+//                .anyMatch(post -> Objects.equals(post.getId(), id));
+//    }
 
     @Override
-    public boolean exists(long id) {
-        return posts.containsKey(id);
-    }
-
-    @Override
-    public Post register(String title, String content) {
-        long id = posts.keySet()
-                       .stream()
-                       .max(Comparator.comparing(Function.identity()))
-                       .map(l -> l + 1)
-                       .orElse(1L);
-
-        Post post = Post.create(title, content);
-        post.setId(id);
-
-        posts.put(id, post);
-
+    public Post register(String id, String title, String content, Type type) {
+        Post post = Post.create(id, title, content, type);
+        post.setPostId((long) posts.size());
+        posts.add(post);
         return post;
     }
 
+
     @Override
-    public Post getPost(long id) {
-        return exists(id) ? posts.get(id) : null;
+    public List<Post> getPosts(String id) {
+        return posts.stream()
+                .filter(post -> Objects.equals(post.getId(),id))
+                .collect(Collectors.toList());
     }
 
+    @Override
+    public Post getPost(long postId) {
+        return posts.get((int) postId);
+    }
 }

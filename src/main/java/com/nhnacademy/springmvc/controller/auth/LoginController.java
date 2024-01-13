@@ -24,15 +24,8 @@ public class LoginController {
         this.adminRepository = adminRepository;
     }
 
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin/adminIndex";
-    }
 
-    @GetMapping("/customer")
-    public String customer() {
-        return "customer/customerIndex";
-    }
+
 
     @GetMapping("/login")
     public String login() {
@@ -49,13 +42,11 @@ public class LoginController {
         try {
             if (adminRepository.matches(id, pwd) && Objects.equals(userType, "admin")) {
                 HttpSession session = request.getSession(true);
-                modelMap.put("id", session.getId());
-                session.setAttribute("adminId",session.getId());
+                session.setAttribute("adminId", id);
                 return "redirect:/admin";
             } else if (customerRepository.matches(id, pwd) && Objects.equals(userType, "customer")) {
                 HttpSession session = request.getSession(true);
-                modelMap.put("id", session.getId());
-                session.setAttribute("customerId",session.getId());
+                session.setAttribute("customerId", id);
                 return "redirect:/customer";
             } else {
                 throw new LoginFailedException("로그인 실패");
