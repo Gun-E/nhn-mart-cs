@@ -16,9 +16,11 @@ public class PostRepositoryImpl implements PostRepository {
 
 
     @Override
-    public Post register(String id, String title, String content, Type type) {
+    public Post register(String id, String title, String content, Type type, String fileName, String filePath) {
         Post post = Post.create(id, title, content, type);
         post.setPostId((long) posts.size());
+        post.setFileName(fileName);
+        post.setFilePath(filePath);
         posts.add(post);
         return post;
     }
@@ -26,9 +28,11 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public List<Post> getPosts(String id) {
-        return posts.stream()
-                .filter(post -> Objects.equals(post.getId(),id))
+        List<Post> filteredPosts = posts.stream()
+                .filter(post -> Objects.equals(post.getId(), id))
                 .collect(Collectors.toList());
+        Collections.reverse(filteredPosts);
+        return filteredPosts;
     }
 
     @Override
@@ -50,5 +54,10 @@ public class PostRepositoryImpl implements PostRepository {
         post.setAnswerContent(answerContent);
         post.setAdminName(adminName);
         post.setAnswerCreatedAt(LocalDateTime.now());
+    }
+
+    @Override
+    public void saveFileName(long postId,String fileName) {
+        getPost(postId).setFileName(fileName);
     }
 }

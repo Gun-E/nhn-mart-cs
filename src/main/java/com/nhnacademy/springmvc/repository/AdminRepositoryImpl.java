@@ -1,11 +1,9 @@
 package com.nhnacademy.springmvc.repository;
 
 import com.nhnacademy.springmvc.domain.Admin;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,19 +18,23 @@ public class AdminRepositoryImpl implements AdminRepository {
     @Override
     public boolean matches(String id, String password) {
         return Optional.ofNullable(getAdmin(id))
-                       .map(admin -> admin.getPassword().equals(password))
-                       .orElse(false);
+                .map(admin -> admin.getPassword().equals(password))
+                .orElse(false);
     }
 
+    @Override
     public void addAdmin(String id, String password, String adminName) {
         Admin admin = new Admin(id, password, adminName);
         adminMap.put(id, admin);
     }
 
+    @Override
     public Admin getAdmin(String id) {
         return exists(id) ? adminMap.get(id) : null;
     }
-    public String getAdminName(String id){
+
+    @Override
+    public String getAdminName(String id) {
         return getAdmin(id).getAdminName();
     }
 }

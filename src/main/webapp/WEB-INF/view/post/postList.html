@@ -10,8 +10,8 @@
 </head>
 
 <body>
-<div class="container mt-4">
-    <h2 class="mb-3">내 문의 목록</h2>
+<div class="mt-3 container">
+    <h2 class="mt-3 mb-3">내 문의 목록</h2>
 
     <form th:action="@{/customer/post/list}" method="get">
         <div class="form-group row">
@@ -47,13 +47,13 @@
                 <a th:href="@{'/customer/post/' + ${post.postId}}"><span th:text="${post.title}"></span></a>
             </td>
             <td th:text="${post.type.getDisplayName()}"></td>
-            <td th:text="${post.createdAt}"></td>
-            <td th:text="${post.answer}"></td>
+            <td th:text="${post.createdAt.toLocalDate()}"></td>
+            <td th:text="${post.answer ? '답변 완료' : '답변 미 등록'}" th:class="${post.answer ? 'text-primary' : 'text-danger'}"></td>
         </tr>
         </tbody>
     </table>
     <form th:action="@{/customer}" method="get">
-        <input class="mt-3 btn btn-primary" type="submit" value="이전으로"/>
+        <input class="mt-3 btn btn-secondary" type="submit" value="이전으로"/>
     </form>
 </div>
 </body>

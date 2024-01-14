@@ -18,15 +18,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public boolean matches(String id, String password) {
         return Optional.ofNullable(getCustomer(id))
-                       .map(customer -> customer.getPassword().equals(password))
-                       .orElse(false);
+                .map(customer -> customer.getPassword().equals(password))
+                .orElse(false);
     }
 
+    @Override
     public void addCustomer(String id, String password) {
         Customer customer = new Customer(id, password);
         customerMap.put(id, customer);
     }
 
+    @Override
     public Customer getCustomer(String id) {
         return exists(id) ? customerMap.get(id) : null;
     }

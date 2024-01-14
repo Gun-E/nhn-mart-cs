@@ -19,12 +19,14 @@
             <hr class="my-4">
             <p class="card-text">내용: <span th:text="${post.content}"></span></p>
             <hr class="my-4">
+            <p class="card-text" th:text="${post.fileName ne '' ? '첨부파일: ' + post.fileName : '첨부파일: 없음'}"></p>
+            <hr class="my-4">
             <div th:if="${not post.answer}">
                 <p class="card-text text-danger">* 답변이 아직 없습니다.</p>
             </div>
             <div th:if="${post.answer}">
                 <p class="card-text">답변 내용: <span th:text="${post.answerContent}"></span></p>
-                <p class="card-text">답변 일시: <span th:text="${post.answerCreatedAt}"></span></p>
+                <p class="card-text">답변 일시: <span th:text="${post.answerCreatedAt.toLocalDate()}"></span></p>
                 <p class="card-text">CS 담당자: <span th:text="${post.adminName}"></span></p>
             </div>
         </div>

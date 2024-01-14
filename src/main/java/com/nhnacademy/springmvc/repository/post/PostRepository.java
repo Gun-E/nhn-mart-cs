@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface PostRepository {
 
-    Post register(String id, String title, String content, Type type);
+    Post register(String id, String title, String content, Type type, String fileName, String filePath);
 
     List<Post> getPosts(String Id);
 
@@ -16,4 +16,5 @@ public interface PostRepository {
     List<Post> getAdminPosts();
 
     void submitAnswer(Long postId, String answerContent, String adminName);
+    void saveFileName(long postId, String fileName);
 }

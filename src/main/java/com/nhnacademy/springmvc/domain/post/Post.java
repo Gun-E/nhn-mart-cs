@@ -22,6 +22,13 @@ public class Post {
 
     @Getter
     @Setter
+    private String fileName;
+    @Getter
+    @Setter
+    private String filePath;
+
+    @Getter
+    @Setter
     private LocalDateTime answerCreatedAt;
 
     @Getter
@@ -53,5 +60,7 @@ public class Post {
         answerContent = null;
         adminName = null;
         postId = null;
+        fileName = null;
+        filePath = null;
     }
 }

@@ -36,18 +36,6 @@ public class PostController {
         return "post/postView";
     }
 
-    @GetMapping("/{postId}/modify")
-    public String postModifyForm(@ModelAttribute("post") Post post,
-                                 Model model) {
-        if (Objects.isNull(post)) {
-            model.addAttribute("exception", new PostNotFoundException());
-            return "error";
-        }
-
-        model.addAttribute("post", post);
-        return "post/postModify";
-    }
-
     @GetMapping("/list")
     public String listPosts(@RequestParam(name = "category", required = false) String category, HttpServletRequest request, Model model) {
         String id = String.valueOf(request.getSession().getAttribute("customerId"));
@@ -58,7 +46,6 @@ public class PostController {
                     .filter(post -> post.getType().equals(Type.valueOf(category)))
                     .collect(Collectors.toList());
         }
-
         model.addAttribute("filteredPosts", posts);
         return "post/postList";
     }

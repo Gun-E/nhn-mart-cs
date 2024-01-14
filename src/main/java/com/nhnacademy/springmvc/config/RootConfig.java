@@ -11,6 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @Configuration
 @ComponentScan(basePackageClasses = Base.class,
@@ -29,13 +32,6 @@ public class RootConfig {
         adminRepositoryImpl.addAdmin("admin", "12345", "관리자");
 
         return adminRepositoryImpl;
-    }
-    @Bean
-    public PostRepository postRepository() {
-        PostRepositoryImpl postRepository = new PostRepositoryImpl();
-        postRepository.register("홍길동","안녕하세요", "환불해줘", Type.OTHER);
-        postRepository.register("홍길동","안녕하세요","환불해주라고",Type.PRAISE);
-        return postRepository;
     }
     @Bean
     public MessageSource messageSource() {
