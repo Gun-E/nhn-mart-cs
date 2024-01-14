@@ -43,7 +43,7 @@ public class LoginController {
             if (adminRepository.matches(id, pwd) && Objects.equals(userType, "admin")) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("adminId", id);
-                return "redirect:/admin";
+                return "redirect:/admin/list";
             } else if (customerRepository.matches(id, pwd) && Objects.equals(userType, "customer")) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("customerId", id);

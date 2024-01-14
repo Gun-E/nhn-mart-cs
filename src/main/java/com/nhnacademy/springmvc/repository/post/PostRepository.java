@@ -12,4 +12,8 @@ public interface PostRepository {
     List<Post> getPosts(String Id);
 
     Post getPost(long postId);
+
+    List<Post> getAdminPosts();
+
+    void submitAnswer(Long postId, String answerContent, String adminName);
 }

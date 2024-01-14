@@ -2,6 +2,7 @@ package com.nhnacademy.springmvc.repository.post;
 
 import com.nhnacademy.springmvc.domain.post.Post;
 import com.nhnacademy.springmvc.domain.post.Type;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import lombok.Getter;
@@ -13,11 +14,6 @@ import java.util.function.Function;
 public class PostRepositoryImpl implements PostRepository {
     private final List<Post> posts = new ArrayList<>();
 
-//    @Override
-//    public boolean exists(String id) {
-//        return posts.stream()
-//                .anyMatch(post -> Objects.equals(post.getId(), id));
-//    }
 
     @Override
     public Post register(String id, String title, String content, Type type) {
@@ -38,5 +34,21 @@ public class PostRepositoryImpl implements PostRepository {
     @Override
     public Post getPost(long postId) {
         return posts.get((int) postId);
+    }
+
+    @Override
+    public List<Post> getAdminPosts() {
+        return posts.stream()
+                .filter(post -> !post.isAnswer())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public void submitAnswer(Long postId, String answerContent, String adminName) {
+        Post post = getPost(postId);
+        post.setAnswer(true);
+        post.setAnswerContent(answerContent);
+        post.setAdminName(adminName);
+        post.setAnswerCreatedAt(LocalDateTime.now());
     }
 }

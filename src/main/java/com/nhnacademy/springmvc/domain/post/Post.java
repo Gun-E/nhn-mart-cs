@@ -21,14 +21,18 @@ public class Post {
     private final LocalDateTime createdAt;
 
     @Getter
+    @Setter
     private LocalDateTime answerCreatedAt;
 
     @Getter
+    @Setter
     private boolean answer;
 
     @Getter
+    @Setter
     private String answerContent;
     @Getter
+    @Setter
     private String adminName;
     @Getter
     @Setter

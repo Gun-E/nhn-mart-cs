@@ -7,7 +7,10 @@ import lombok.Setter;
 
 
 public class Admin extends User{
-    public Admin(String id, String password) {
+    public Admin(String id, String password, String adminName) {
         super(id, password);
+        this.adminName = adminName;
     }
+    @Getter
+    String adminName;
 }

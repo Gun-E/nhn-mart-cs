@@ -24,12 +24,15 @@ public class AdminRepositoryImpl implements AdminRepository {
                        .orElse(false);
     }
 
-    public void addAdmin(String id, String password) {
-        Admin admin = new Admin(id, password);
+    public void addAdmin(String id, String password, String adminName) {
+        Admin admin = new Admin(id, password, adminName);
         adminMap.put(id, admin);
     }
 
     public Admin getAdmin(String id) {
         return exists(id) ? adminMap.get(id) : null;
+    }
+    public String getAdminName(String id){
+        return getAdmin(id).getAdminName();
     }
 }
