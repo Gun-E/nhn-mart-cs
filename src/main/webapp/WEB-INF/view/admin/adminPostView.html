@@ -22,7 +22,7 @@
             <p class="card-text" th:text="${post.fileName ne '' ? '첨부파일: ' + post.fileName : '첨부파일: 없음'}"></p>
             <div th:if="${post.fileName ne ''}">
                 <form th:action="@{'/admin/image/' + ${post.fileName}}" target="_blank" method="get">
-                    <input class="btn btn-secondary" type="submit" value="이미지 보기"/>
+                    <input class="btn btn-secondary" type="submit" value="이미지 다운로드"/>
                 </form>
             </div>
             <hr class="my-4">
