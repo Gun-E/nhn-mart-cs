@@ -29,7 +29,7 @@ public class RootConfig {
     @Bean
     public AdminRepository adminRepository() {
         AdminRepositoryImpl adminRepositoryImpl = new AdminRepositoryImpl();
-        adminRepositoryImpl.addAdmin("admin", "12345", "관리자");
+        adminRepositoryImpl.addAdmin("admin", "12345", "CS 관리자");
 
         return adminRepositoryImpl;
     }
