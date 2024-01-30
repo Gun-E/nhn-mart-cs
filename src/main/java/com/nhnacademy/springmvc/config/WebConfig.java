@@ -90,7 +90,6 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware, Mes
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(-1);
-
         return multipartResolver;
     }
     @Override
